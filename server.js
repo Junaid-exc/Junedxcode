@@ -3,6 +3,9 @@ const nodemailer = require("nodemailer");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const path = require("path");
+console.log("Email User:", process.env.EMAIL_USER);
+console.log("Email Pass:", process.env.EMAIL_PASS ? "Loaded" : "Not Loaded");
+
 
 const app = express();
 const PORT = process.env.PORT || 3000;
