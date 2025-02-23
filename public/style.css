@@ -312,6 +312,7 @@ transition: 0.7s linear;
  
   cursor: pointer;
   animation: scrl linear 20s infinite;
+   font-family: "Poppins", !important;
   
 
 }
