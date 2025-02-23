@@ -25,14 +25,13 @@ app.post("/send-email", (req, res) => {
     if (!eml2 || !nme || !eml || !msg) {
         return res.status(400).json({ success: false, message: "All fields are required." });
     }
-
-    const transporter = nodemailer.createTransport({
-        service: "gmail",
-        auth: {
-            user: "jkgamingzome@gmail.com",
-            pass: "dgoy vmnp zsjl mljb",
-        },
-    });
+const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+    },
+});
 
     const mailOptions = {
         from: eml,
