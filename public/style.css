@@ -11,7 +11,6 @@
  
 
 }
-
 .nav{
   display: flex;
   justify-content: flex-start;
@@ -759,7 +758,6 @@ ul#li li a:hover {
     }
 
 
-
     .clp {
       font-size: 30px;
     }
@@ -767,7 +765,7 @@ ul#li li a:hover {
     }
     @media only screen and (max-width: 412px) and (max-height: 932px) {
       .p2{
-        height: 580vh !important;
+        height: 572vh !important;
       }
   
     }
@@ -1156,4 +1154,5 @@ bottom: 10vh;
   position: relative;
   right: 30vh;
 }
+
 
