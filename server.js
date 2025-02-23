@@ -2,25 +2,20 @@ const express = require("express");
 const nodemailer = require("nodemailer");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const path = require("path");
 
 const app = express();
-const PORT = process.env.PORT || 3000; // Use Vercel's provided port
+const PORT = process.env.PORT || 3000;
+
+// ✅ Serve static files from the 'public' folder
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use(cors());
 app.use(bodyParser.json());
 
-// ✅ Handle the root route (Fixes "Cannot GET /" issue)
+// ✅ Serve index.html at root route
 app.get("/", (req, res) => {
-    res.send("Hello! Your Node.js server is running successfully on Vercel.");
-});
-
-// Email transporter
-const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-        user: "jkgamingzome@gmail.com", 
-        pass: "dgoy vmnp zsjl mljb",    
-    },
+    res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 // ✅ Email Route
@@ -31,10 +26,18 @@ app.post("/send-email", (req, res) => {
         return res.status(400).json({ success: false, message: "All fields are required." });
     }
 
+    const transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+            user: "jkgamingzome@gmail.com",
+            pass: "dgoy vmnp zsjl mljb",
+        },
+    });
+
     const mailOptions = {
-        from: eml, 
-        to: "jkgamingzome@gmail.com", 
-        subject: `Message from ${nme}`, 
+        from: eml,
+        to: "jkgamingzome@gmail.com",
+        subject: `Message from ${nme}`,
         text: `You have received a message from ${nme} (${eml2}):\n\n${msg}`,
     };
 
