@@ -27,6 +27,9 @@
 
   
 }
+.scroll {
+  font-family: "Montserrat", !important;
+}
 body{
   background-color: black;
   z-index: 99;
